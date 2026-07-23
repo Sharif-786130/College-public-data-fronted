@@ -11,6 +11,8 @@ export default function Signup() {
     fullName: "",
   });
 
+  const [showpassword,setShowpassword]=useState(false);
+
   const navigate = useNavigate();
 
   const handleChange = (e) =>
@@ -49,13 +51,22 @@ export default function Signup() {
           onChange={handleChange}
         />
 
-        <input
+        <div className="relative mb-3">
+           <input
           name="password"
-          type="password"
+          type={setShowpassword ? "text":"password"}
           placeholder="Password"
           className="w-full p-2 mb-3 border"
           onChange={handleChange}
         />
+        <button
+          type="button"
+          onClick={()=>setShowpassword(!showpassword)}
+          className="absolute right-3 top-0.5 translate-y-1/2 flex items-center justify-center leading-none text-gray-500">
+          {showpassword?"🙈":"👁️"}
+        </button>
+        </div>
+       
 
         <button className="w-full bg-blue-600 text-white p-2 rounded">
           Register
